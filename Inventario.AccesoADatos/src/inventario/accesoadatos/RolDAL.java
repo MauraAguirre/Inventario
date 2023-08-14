@@ -1,6 +1,5 @@
 package inventario.accesoadatos;
 
-public class Producto {
-
+public class RolDAL {
     
 }

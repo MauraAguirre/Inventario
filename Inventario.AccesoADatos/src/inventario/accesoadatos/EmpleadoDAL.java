@@ -1,6 +1,5 @@
 package inventario.accesoadatos;
 
-public class Marcas {
-    
+public class EmpleadoDAL {
     
 }

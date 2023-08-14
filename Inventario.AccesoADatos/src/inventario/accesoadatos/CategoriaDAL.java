@@ -1,5 +1,5 @@
 package inventario.accesoadatos;
 
-public class Rol {
-      
+public class CategoriaDAL {
+    
 }
