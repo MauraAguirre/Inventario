@@ -11,11 +11,13 @@ public class Producto {
     private int ingreso;
     private int salida;
     private int total;
+    private int top_aux;
+
 
     public Producto() {
     }
-
-    public Producto(int id, String nombre, String codigo, int categoriaId, int marcasId, int proveedoresId, int cantidad, int ingreso, int salida, int total) {
+    
+    public Producto(int id, String nombre, String codigo, int categoriaId, int marcasId, int proveedoresId, int cantidad, int ingreso, int salida, int total, int top_aux) {
         this.id = id;
         this.nombre = nombre;
         this.codigo = codigo;
@@ -26,6 +28,7 @@ public class Producto {
         this.ingreso = ingreso;
         this.salida = salida;
         this.total = total;
+        this.top_aux = top_aux;
     }
 
     public int getId() {
@@ -107,5 +110,15 @@ public class Producto {
     public void setTotal(int total) {
         this.total = total;
     }
+
+    public int getTop_aux() {
+        return top_aux;
+    }
+
+    public void setTop_aux(int top_aux) {
+        this.top_aux = top_aux;
+    }
+
+  
     
 }

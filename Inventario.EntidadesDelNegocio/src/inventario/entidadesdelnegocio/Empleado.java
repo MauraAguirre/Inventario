@@ -7,17 +7,20 @@ public class Empleado {
     private String usuario;
     private String clave;
     private int Rold;
+    private int top_aux;
+
 
     public Empleado() {
     }
 
-    public Empleado(int id, String nombre, String apellido, String usuario, String clave, int Rold) {
+    public Empleado(int id, String nombre, String apellido, String usuario, String clave, int Rold, int top_aux) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.usuario = usuario;
         this.clave = clave;
         this.Rold = Rold;
+        this.top_aux = top_aux;
     }
 
     public int getId() {
@@ -67,6 +70,15 @@ public class Empleado {
     public void setRold(int Rold) {
         this.Rold = Rold;
     }
+
+    public int getTop_aux() {
+        return top_aux;
+    }
+
+    public void setTop_aux(int top_aux) {
+        this.top_aux = top_aux;
+    }
+
     
     
 }
