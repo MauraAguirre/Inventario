@@ -6,7 +6,7 @@ public class Rol {
     private int id;
     private String nombre;
     private int top_aux;
-    private ArrayList<Usuario> usuarios;
+        private ArrayList<Empleado> empleados;
 
     
 
