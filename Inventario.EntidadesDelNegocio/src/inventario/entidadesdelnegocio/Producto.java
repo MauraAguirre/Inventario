@@ -12,12 +12,16 @@ public class Producto {
     private int salida;
     private int total;
     private int top_aux;
+    private Categoria categoria;
+    private Marcas marca;
+    private Proveedores proveedores;
+    
 
 
     public Producto() {
     }
     
-    public Producto(int id, String nombre, String codigo, int categoriaId, int marcasId, int proveedoresId, int cantidad, int ingreso, int salida, int total, int top_aux) {
+    public Producto(int id, String nombre, String codigo, int categoriaId, int marcasId, int proveedoresId, int cantidad, int ingreso, int salida, int total, int top_aux, Categoria categoria, Marcas marca, Proveedores proveedores) {
         this.id = id;
         this.nombre = nombre;
         this.codigo = codigo;
@@ -29,6 +33,9 @@ public class Producto {
         this.salida = salida;
         this.total = total;
         this.top_aux = top_aux;
+        this.categoria = categoria;
+        this.marca = marca;
+        this.proveedores = proveedores;
     }
 
     public int getId() {
@@ -119,6 +126,28 @@ public class Producto {
         this.top_aux = top_aux;
     }
 
-  
-    
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Marcas getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marcas marca) {
+        this.marca = marca;
+    }
+
+    public Proveedores getProveedores() {
+        return proveedores;
+    }
+
+    public void setProveedores(Proveedores proveedores) {
+        this.proveedores = proveedores;
+    }
+
 }
