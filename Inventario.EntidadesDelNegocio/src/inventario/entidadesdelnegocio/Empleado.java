@@ -6,21 +6,27 @@ public class Empleado {
     private String apellido;
     private String usuario;
     private String clave;
-    private int Rold;
+    private int RolId;
     private int top_aux;
+    private Rol rol;
+    private byte estatus;
+    private String confirmPassword_aux;
 
 
     public Empleado() {
     }
 
-    public Empleado(int id, String nombre, String apellido, String usuario, String clave, int Rold, int top_aux) {
+    public Empleado(int id, String nombre, String apellido, String usuario, String clave, int RolId, int top_aux, Rol rol, byte estatus, String confirmPassword_aux) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.usuario = usuario;
         this.clave = clave;
-        this.Rold = Rold;
+        this.RolId = RolId;
         this.top_aux = top_aux;
+        this.rol = rol;
+        this.estatus = estatus;
+        this.confirmPassword_aux = confirmPassword_aux;
     }
 
     public int getId() {
@@ -63,12 +69,12 @@ public class Empleado {
         this.clave = clave;
     }
 
-    public int getRold() {
-        return Rold;
+    public int getRolId() {
+        return RolId;
     }
 
-    public void setRold(int Rold) {
-        this.Rold = Rold;
+    public void setRolId(int RolId) {
+        this.RolId = RolId;
     }
 
     public int getTop_aux() {
@@ -79,6 +85,35 @@ public class Empleado {
         this.top_aux = top_aux;
     }
 
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    public byte getEtatus() {
+        return estatus;
+    }
+
+    public void setStatus(byte estatus) {
+        this.estatus = estatus;
+    }
+
+    public String getConfirmPassword_aux() {
+        return confirmPassword_aux;
+    }
+
+    public void setConfirmPassword_aux(String confirmPassword_aux) {
+        this.confirmPassword_aux = confirmPassword_aux;
+    }
     
-    
+    public class EstatusEmpleado {
+        public static final byte ACTIVO = 1;
+        public static final byte INACTIVO = 2;
+
+    }
+
+   
 }
