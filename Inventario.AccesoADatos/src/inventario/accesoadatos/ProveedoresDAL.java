@@ -17,12 +17,12 @@ public class ProveedoresDAL {
         if (pProveedores.getTop_aux() > 0 && ComunDB.TIPODB == ComunDB.TipoDB.SQLSERVER) {            
             sql += "TOP " + pProveedores.getTop_aux() + " ";
         }
-        sql += (obtenerCampos() + " FROM Rol r");
+        sql += (obtenerCampos() + " FROM Proveedores prov");
         return sql;
     }
     
     private static String agregarOrderBy(Proveedores pProveedores) {
-        String sql = " ORDER BY r.Id DESC";
+        String sql = " ORDER BY prov.Id DESC";
         if (pProveedores.getTop_aux() > 0 && ComunDB.TIPODB == ComunDB.TipoDB.MYSQL) {
             sql += " LIMIT " + pProveedores.getTop_aux() + " ";
         }
@@ -113,7 +113,7 @@ public class ProveedoresDAL {
         ArrayList<Proveedores> proveedor = new ArrayList();
         try (Connection conn = ComunDB.obtenerConexion();) { 
             String sql = obtenerSelect(pProveedores);
-            sql += " WHERE r.Id=?";
+            sql += " WHERE prov.Id=?";
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                 ps.setInt(1, pProveedores.getId());
                 obtenerDatos(ps, proveedor);
@@ -157,14 +157,14 @@ public class ProveedoresDAL {
     static void querySelect(Proveedores pProveedores, ComunDB.utilQuery pUtilQuery) throws SQLException {
         PreparedStatement statement = pUtilQuery.getStatement();
         if (pProveedores.getId() > 0) {
-            pUtilQuery.AgregarNumWhere(" r.Id=? ");
+            pUtilQuery.AgregarNumWhere(" prov.Id=? ");
             if (statement != null) { 
                 statement.setInt(pUtilQuery.getNumWhere(), pProveedores.getId()); 
             }
         }
 
         if (pProveedores.getNombre() != null && pProveedores.getNombre().trim().isEmpty() == false) {
-            pUtilQuery.AgregarNumWhere(" r.Nombre LIKE ? "); 
+            pUtilQuery.AgregarNumWhere(" prov.Nombre LIKE ? "); 
             if (statement != null) {
                 statement.setString(pUtilQuery.getNumWhere(), "%" + pProveedores.getNombre() + "%"); 
             }
