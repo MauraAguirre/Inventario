@@ -137,12 +137,12 @@ public class MarcasDAL {
     }
     
     public static ArrayList<Marcas> obtenerTodos() throws Exception {
-        ArrayList<Marcas> proveedor = new ArrayList<>();
+        ArrayList<Marcas> marca = new ArrayList<>();
         try (Connection conn = ComunDB.obtenerConexion();) {
             String sql = obtenerSelect(new Marcas());
             sql += agregarOrderBy(new Marcas());
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
-                obtenerDatos(ps, proveedor);
+                obtenerDatos(ps, marca);
                 ps.close();
             } catch (SQLException ex) {
                 throw ex;
@@ -153,7 +153,7 @@ public class MarcasDAL {
             throw ex;
         }
         
-        return proveedor;
+        return marca;
     }
     
     static void querySelect(Marcas pMarcas, ComunDB.utilQuery pUtilQuery) throws SQLException {
@@ -166,7 +166,7 @@ public class MarcasDAL {
         }
 
         if (pMarcas.getNombre() != null && pMarcas.getNombre().trim().isEmpty() == false) {
-            pUtilQuery.AgregarNumWhere(" r.Nombre LIKE ? "); 
+            pUtilQuery.AgregarNumWhere(" marc.Nombre LIKE ? "); 
             if (statement != null) {
                 statement.setString(pUtilQuery.getNumWhere(), "%" + pMarcas.getNombre() + "%"); 
             }
