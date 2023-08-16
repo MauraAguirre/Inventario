@@ -37,12 +37,12 @@ public class ProductoDAL {
                 try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                     ps.setString(1, pProducto.getNombre());
                     ps.setString(2, pProducto.getCodigo()); 
-                    ps.setint(3, pProducto.getCategoriaId());
-                    ps.setint(4, pProducto.getMarcasId());
-                    ps.setint(5, pProducto.getProveedoresId());
-                    ps.setint(6, pProducto.getCantidad());
-                    ps.setint(7, pProducto.getIngreso());
-                    ps.setint(8, pProducto.getSalida());
+                    ps.setInt(3, pProducto.getCategoriaId());
+                    ps.setInt(4, pProducto.getMarcasId());
+                    ps.setInt(5, pProducto.getProveedoresId());
+                    ps.setInt(6, pProducto.getCantidad());
+                    ps.setInt(7, pProducto.getIngreso());
+                    ps.setInt(8, pProducto.getSalida());
            
                     result = ps.executeUpdate();
                     ps.close();
@@ -65,13 +65,13 @@ public class ProductoDAL {
                 try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                    ps.setString(1, pProducto.getNombre());
                     ps.setString(2, pProducto.getCodigo()); 
-                    ps.setint(3, pProducto.getCategoriaId());
-                    ps.setint(4, pProducto.getMarcasId());
-                    ps.setint(5, pProducto.getProveedoresId());
-                    ps.setint(6, pProducto.getCantidad());
-                    ps.setint(7, pProducto.getIngreso());
-                    ps.setint(8, pProducto.getSalida());
-                    ps.setint(9, pProducto.getId());
+                    ps.setInt(3, pProducto.getCategoriaId());
+                    ps.setInt(4, pProducto.getMarcasId());
+                    ps.setInt(5, pProducto.getProveedoresId());
+                    ps.setInt(6, pProducto.getCantidad());
+                    ps.setInt(7, pProducto.getIngreso());
+                    ps.setInt(8, pProducto.getSalida());
+                    ps.setInt(9, pProducto.getId());
                     result = ps.executeUpdate();
                     ps.close();
                 } catch (SQLException ex) {
@@ -119,16 +119,16 @@ public class ProductoDAL {
         pIndex++;
         pProducto.setMarcasId(pResultSet.getInt(pIndex)); 
         pIndex++;
-        pProducto.setProveedoresId(pResultSet.getByte(pIndex)); //preguntar si el smallint es = a byte
+        pProducto.setProveedoresId(pResultSet.getInt(pIndex)); //preguntar si el smallint es = a byte
         pIndex++;
         pProducto.setCantidad(pResultSet.getInt(pIndex)); 
         pIndex++;
         pProducto.setIngreso(pResultSet.getInt(pIndex));
         pIndex++;
         pProducto.setSalida(pResultSet.getInt(pIndex)); 
-       /* pIndex++;
-        pProducto.setTotal(pResultSet.getInt(pIndex)); asi  iria el total?
-        */
+        pIndex++;
+        pProducto.setTotal(pResultSet.getInt(pIndex));
+        
         return pIndex;
         
     }
@@ -145,21 +145,42 @@ public class ProductoDAL {
             throw ex;
         }
     }
-    //Preguntar si es uno para cada llaveprimaria, y porque da error 
-    private static void obtenerDatosIncluirRol(PreparedStatement pPS, ArrayList<Producto> pProducto) throws Exception {
+   
+    private static void obtenerDatosIncluirRelaciones(PreparedStatement pPS, ArrayList<Producto> pProducto) throws Exception {
         try (ResultSet resultSet = ComunDB.obtenerResultSet(pPS);) {
-            HashMap<Integer, Categoria> categoriaMap = new HashMap(); 
+            HashMap<Integer, Marcas> marcaMap = new HashMap(); 
+            HashMap<Integer, Proveedores> proveedorMap = new HashMap();
+            HashMap<Integer, Categoria> categoriaMap = new HashMap();
             while (resultSet.next()) {
                 Producto producto = new Producto();
                 int index = asignarDatosResultSet(producto, resultSet, 0);
+                if (marcaMap.containsKey(producto.getMarcasId()) == false) {
+                    Marcas marca = new Marcas();
+                    MarcasDAL.asignarDatosResultSet(marca, resultSet, index);
+                    marcaMap.put(marca.getId(), marca); 
+                    producto.setMarca(marca); 
+                } else {
+                    producto.setMarca(marcaMap.get(producto.getMarcasId())); 
+                }
+                
+                if (proveedorMap.containsKey(producto.getProveedoresId()) == false) {
+                    Proveedores proveedor = new Proveedores();
+                    ProveedoresDAL.asignarDatosResultSet(proveedor, resultSet, index+3);
+                    proveedorMap.put(proveedor.getId(), proveedor); 
+                    producto.setProveedores(proveedor); 
+                } else {
+                    producto.setProveedores(proveedorMap.get(producto.getProveedoresId())); 
+                }
+                
                 if (categoriaMap.containsKey(producto.getCategoriaId()) == false) {
                     Categoria categoria = new Categoria();
-                    CategoriaDAL.asignarDatosResultSet(categoria, resultSet, index); //este error se arreglara cuando se progame CategoriaDAL
+                    CategoriaDAL.asignarDatosResultSet(categoria, resultSet, index+8);
                     categoriaMap.put(categoria.getId(), categoria); 
                     producto.setCategoria(categoria); 
                 } else {
                     producto.setCategoria(categoriaMap.get(producto.getCategoriaId())); 
                 }
+                
                 pProducto.add(producto); 
             }
             resultSet.close();
