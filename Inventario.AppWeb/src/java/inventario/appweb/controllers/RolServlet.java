@@ -10,8 +10,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 
-@WebServlet(name = "HomeServlet", urlPatterns = {"/Home"})
-public class HomeServlet extends HttpServlet {
+@WebServlet(name = "RolServlet", urlPatterns = {"/Rol"})
+public class RolServlet extends HttpServlet {
 
     
+   
 }
