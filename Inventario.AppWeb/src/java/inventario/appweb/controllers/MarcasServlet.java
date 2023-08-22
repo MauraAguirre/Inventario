@@ -51,7 +51,7 @@ public class MarcasServlet extends HttpServlet {
         try {
             Marcas marca = obtenerMarcas(request);
             ArrayList<Marcas> marcas = MarcasDAL.buscar(marca);
-            request.setAttribute("contactos", marcas);
+            request.setAttribute("marcas", marcas);
             request.setAttribute("top_aux", marca.getTop_aux());
             request.getRequestDispatcher("Views/Marcas/index.jsp").forward(request, response);
         } catch (Exception ex) { 
