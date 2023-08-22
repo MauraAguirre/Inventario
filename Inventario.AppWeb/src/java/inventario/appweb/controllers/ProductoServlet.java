@@ -103,7 +103,13 @@ public class ProductoServlet extends HttpServlet {
                 Categoria categoria = new Categoria();
                 categoria.setId(producto_result.getCategoriaId());
                 producto_result.setCategoria(CategoriaDAL.obtenerPorId(categoria));
-                request.setAttribute("usuario", producto_result);
+                Marcas marcas = new Marcas();
+                marcas.setId(producto_result.getMarcasId());
+                producto_result.setMarca(MarcasDAL.obtenerPorId(marcas));
+                Proveedores proveedores = new Proveedores();
+                proveedores.setId(producto_result.getProveedoresId());
+                producto_result.setProveedores(ProveedoresDAL.obtenerPorId(proveedores));
+                request.setAttribute("producto", producto_result);
             } else {
                 Utilidad.enviarError("El Id:" + producto_result.getId() + " no existe en la tabla de Producto", request, response);
             }
