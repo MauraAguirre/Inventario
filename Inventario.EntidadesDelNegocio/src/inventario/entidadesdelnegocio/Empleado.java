@@ -93,11 +93,11 @@ public class Empleado {
         this.rol = rol;
     }
 
-    public byte getEtatus() {
+    public byte getEstatus() {
         return estatus;
     }
 
-    public void setStatus(byte estatus) {
+    public void setEstatus(byte estatus) {
         this.estatus = estatus;
     }
 
