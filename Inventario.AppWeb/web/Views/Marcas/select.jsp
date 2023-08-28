@@ -1,17 +1,15 @@
-<%-- 
-    Document   : select
-    Created on : 20 ago. 2023, 23:29:07
-    Author     : MINEDUCYT
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<%@page import="inventario.entidadesdelnegocio.Marcas"%>
+<%@page import="inventario.accesoadatos.MarcasDAL"%>
+<%@page import="java.util.ArrayList"%>
+
+<% ArrayList<Marcas> marcas = MarcasDAL.obtenerTodos();
+    int id = Integer.parseInt(request.getParameter("id"));
+%>
+<select id="slMacas" name="MarcaId">
+    <option <%=(id == 0) ? "selected" : ""%>  value="0">SELECCIONAR</option>
+    <% for (Marcas marca : marcas) {%>
+    <option <%=(id == marcas.getId()) ? "selected" : ""%>  value="<%=marcas.getId()%>"><%= marcas.getNombre()%></option>
+    <%}%>
+</select>
+<label for="MarcasId">Marcas</label>
