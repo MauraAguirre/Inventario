@@ -1,17 +1,15 @@
-<%-- 
-    Document   : select
-    Created on : 20 ago. 2023, 23:30:25
-    Author     : MINEDUCYT
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<%@page import="inventario.entidadesdelnegocio.Proveedores"%>
+<%@page import="inventario.accesoadatos.ProveedoresDAL"%>
+<%@page import="java.util.ArrayList"%>
+
+<% ArrayList<Proveedores> proveedores = ProveedoresDAL.obtenerTodos();
+    int id = Integer.parseInt(request.getParameter("id"));
+%>
+<select id="slProveedores" name="idProveedores">
+    <option <%=(id == 0) ? "selected" : ""%>  value="0">SELECCIONAR</option>
+    <% for (Proveedores proveedores : proveedores) {%>
+    <option <%=(id == proveedores.getId()) ? "selected" : ""%>  value="<%=proveedores.getId()%>"><%= proveedores.getNombre()%></option>
+    <%}%>
+</select>
+<label for="idProveedores">Proveedores</label>
