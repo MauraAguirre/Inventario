@@ -1,9 +1,12 @@
 package inventario.entidadesdelnegocio;
 
+import java.util.ArrayList;
+
 public class Marcas {
     private int id;
     private String nombre;
     private int top_aux;
+    private ArrayList<Producto> productos;
 
     
 
@@ -38,6 +41,14 @@ public class Marcas {
 
     public void setTop_aux(int top_aux) {
         this.top_aux = top_aux;
+    }
+
+    public ArrayList<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(ArrayList<Producto> productos) {
+        this.productos = productos;
     }
 
 }

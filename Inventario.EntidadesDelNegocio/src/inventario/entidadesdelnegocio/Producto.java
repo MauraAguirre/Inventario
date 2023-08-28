@@ -1,7 +1,7 @@
 package inventario.entidadesdelnegocio;
     
 public class Producto {
-          private int id;
+    private int id;
     private String nombre;
     private String codigo;
     private int categoriaId;

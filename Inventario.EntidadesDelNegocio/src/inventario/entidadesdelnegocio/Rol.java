@@ -6,7 +6,7 @@ public class Rol {
     private int id;
     private String nombre;
     private int top_aux;
-        private ArrayList<Empleado> empleados;
+    private ArrayList<Empleado> empleados;
 
     
 
@@ -43,7 +43,12 @@ public class Rol {
         this.top_aux = top_aux;
     }
 
-   
-    
+    public ArrayList<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    public void setEmpleados(ArrayList<Empleado> empleados) {
+        this.empleados = empleados;
+    }
     
 }

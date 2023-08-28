@@ -1,9 +1,12 @@
 package inventario.entidadesdelnegocio;
 
+import java.util.ArrayList;
+
 public class Proveedores {
     private int id;
     private String nombre;
     private int top_aux;
+    private ArrayList<Producto> productos;
 
 
     public Proveedores() {
@@ -39,5 +42,12 @@ public class Proveedores {
         this.top_aux = top_aux;
     }
 
-    
+    public ArrayList<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(ArrayList<Producto> productos) {
+        this.productos = productos;
+    }
+
 }
