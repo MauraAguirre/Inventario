@@ -1,8 +1,4 @@
-<%-- 
-    Document   : edit
-    Created on : 20 ago. 2023, 23:29:38
-    Author     : MINEDUCYT
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="inventario.entidadesdelnegocio..Categoria"%>
