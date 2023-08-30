@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Inventario.appweb.utils.*"%>
+<%@page import="inventario.appweb.utils.*"%>
 <%@page import="jakarta.servlet.http.HttpServletRequest"%>
 
 <nav>

@@ -11,7 +11,7 @@
         <jsp:include page="/Views/Shared/headerBody.jsp" />  
         <main class="container">   
             <h5>Login</h5>
-            <form action="Emleado?accion=login" method="post">
+            <form action="Empleado?accion=login" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>">                
                 <div class="row">
                     <div class="input-field col l5 s12">                                             

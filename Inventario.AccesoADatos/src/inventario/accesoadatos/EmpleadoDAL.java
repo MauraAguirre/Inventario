@@ -234,7 +234,7 @@ public class EmpleadoDAL {
         }
     }
     
-    public static ArrayList<Empleado> buscarIncluirRol(Empleado pEmpleado) throws Exception {
+    public static ArrayList<Empleado> buscar(Empleado pEmpleado) throws Exception {
         ArrayList<Empleado> empleados = new ArrayList();
         try (Connection conn = ComunDB.obtenerConexion();) {
             String sql = obtenerSelect(pEmpleado);
@@ -321,7 +321,7 @@ public class EmpleadoDAL {
         return result;
     }
     
-   public static ArrayList<Empleado> buscarIncluirEmpleado(Empleado pEmpleado) throws Exception {
+   public static ArrayList<Empleado> buscarIncluirRol(Empleado pEmpleado) throws Exception {
         ArrayList<Empleado> empleado = new ArrayList();
        try (Connection conn = ComunDB.obtenerConexion();) {
            String sql = "SELECT ";
@@ -331,8 +331,8 @@ public class EmpleadoDAL {
             sql += obtenerCampos();
             sql += ",";
            sql += RolDAL.obtenerCampos();
-            sql += " FROM Usuario u";
-            sql += " JOIN Rol r on (u.IdRol=r.Id)";
+            sql += " FROM Empleado e";
+            sql += " JOIN Rol r on (e.RolId=r.Id)";
             ComunDB comundb = new ComunDB();
             ComunDB.utilQuery utilQuery = comundb.new utilQuery(sql, null, 0);
             querySelect(pEmpleado, utilQuery);
