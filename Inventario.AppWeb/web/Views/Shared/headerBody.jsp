@@ -1,17 +1,33 @@
-<%-- 
-    Document   : headerBody
-    Created on : 20 ago. 2023, 23:33:21
-    Author     : MINEDUCYT
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<%@page import="Inventario.appweb.utils.*"%>
+<%@page import="jakarta.servlet.http.HttpServletRequest"%>
+
+<nav>
+    <div class="nav-wrapper blue">
+        <a href="Home" class="brand-logo">App Empresas</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>       
+        <ul class="right hide-on-med-and-down">  
+            <% if (SessionUser.isAuth(request)) {  %>
+            <li><a href="Home">Inicio</a></li>
+            <li><a href="Categoria">Categoria</a></li>
+            <li><a href="Empleado">Empleado</a></li>
+            <li><a href="Marcas">Marcas</a></li>
+            <li><a href="Producto">Producto</a></li>
+            <li><a href="Empleado?accion=cambiarpass">Cambiar password</a></li>
+            <li><a href="Empleado?accion=login">Cerrar sesión</a></li>
+            <%}%>
+        </ul>
+    </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+     <% if (SessionUser.isAuth(request)) {  %>
+            <li><a href="Home">Inicio</a></li>
+            <li><a href="Categoria">Categoria</a></li>
+            <li><a href="Empleado">Empleado</a></li>
+            <li><a href="Marcas">Marcas</a></li>
+            <li><a href="Producto">Producto</a></li>
+            <li><a href="Empleado?accion=cambiarpass">Cambiar password</a></li>
+            <li><a href="Empleado?accion=login">Cerrar sesión</a></li>
+     <%}%>
+</ul>
