@@ -321,10 +321,10 @@ public class ProductoDAL {
             sql += ProveedoresDAL.obtenerCampos();
             sql += ", ";
             sql += CategoriaDAL.obtenerCampos();
-            sql += " FROM Productos pro";
-            sql += " INNER JOIN Marcas marc on (pro.IdMarca = marc.Id)";
-            sql += " INNER JOIN Proveedores prov on (pro.IdProveedor = prov.Id)";
-            sql += " INNER JOIN Categoria ca on (pro.IdCategoria = ca.Id)";
+            sql += " FROM Producto pro";
+            sql += " INNER JOIN Marcas marc on (pro.MarcasId = marc.Id)";
+            sql += " INNER JOIN Proveedores prov on (pro.ProveedoresId = prov.Id)";
+            sql += " INNER JOIN Categoria ca on (pro.CategoriaId = ca.Id)";
             ComunDB comundb = new ComunDB();
             ComunDB.utilQuery utilQuery = comundb.new utilQuery(sql, null, 0);
             querySelect(pProducto, utilQuery);

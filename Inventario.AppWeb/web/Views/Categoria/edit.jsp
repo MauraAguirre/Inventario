@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="inventario.entidadesdelnegocio.Categoria"%>
-<% Categoria categorias = (Categorias) request.getAttribute("categorias");%>
+<% Categoria categorias = (Categoria) request.getAttribute("categorias");%>
 
 <!DOCTYPE html>
 <html>

@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="input-field col l5 s12">                                             
                         <i class="material-icons prefix">account_circle</i>
-                        <input  id="txtLogin" type="text" name="login" required class="validate" maxlength="25">  
+                        <input  id="txtLogin" type="text" name="usuario" required class="validate" maxlength="25">  
                         <label for="txtLogin">Login</label>
                     </div>                                       
                 </div>

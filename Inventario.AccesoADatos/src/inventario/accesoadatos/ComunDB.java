@@ -14,7 +14,7 @@ public class ComunDB {
     
     static String connectionUrlSqlServer = "jdbc:sqlserver://localhost;"
             + "database=InventarioJavaBD;"
-            + "user=JavaUser1;"
+            + "user=JavaUser;"
             + "password=#Modulo16;"
             + "loginTimeout=30;encrypt=false;trustServerCertificate=false";
     

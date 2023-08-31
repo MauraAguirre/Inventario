@@ -1,6 +1,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="inventario.entidadesdelnegocio..Categoria"%>
+<%@page import="inventario.entidadesdelnegocio.Categoria"%>
 <%@page import="inventario.entidadesdelnegocio.Marcas"%>
 <%@page import="inventario.entidadesdelnegocio.Proveedores"%>
 <%@page import="java.util.ArrayList"%>

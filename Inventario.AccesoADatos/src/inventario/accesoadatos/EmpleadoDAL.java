@@ -12,8 +12,24 @@ import java.util.HashMap;
 
 
 public class EmpleadoDAL {
+    public static String encriptarMD5(String txt) throws Exception {
+        try {
+            StringBuffer sb;
+            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+            byte[] array = md.digest(txt.getBytes());
+            sb = new StringBuffer();
+            for (int i = 0; i < array.length; ++i) {
+                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100)
+                        .substring(1, 3));
+            }
+            return sb.toString();
+        } catch (java.security.NoSuchAlgorithmException ex) {
+            throw ex;
+        }
+    }
+    
     static String obtenerCampos() {
-        return "em.Id, em.Nombre, em.Apellido, em.Usuario, em.Clave, em.RolId";
+        return "em.Id, em.Nombre, em.Apellido, em.Usuario, em.Clave, em.RolId, em.Estatus";
     }
     private static String obtenerSelect(Empleado pEmpleado) {
         String sql;
@@ -21,12 +37,12 @@ public class EmpleadoDAL {
         if (pEmpleado.getTop_aux() > 0 && ComunDB.TIPODB == ComunDB.TipoDB.SQLSERVER) {
              sql += "TOP " + pEmpleado.getTop_aux() + " ";
         }
-        sql += (obtenerCampos() + " FROM Usuario u");
+        sql += (obtenerCampos() + " FROM Empleado em");
         return sql;
     }
     
     private static String agregarOrderBy(Empleado pEmpleado) {
-        String sql = " ORDER BY u.Id DESC";
+        String sql = " ORDER BY em.Id DESC";
         if (pEmpleado.getTop_aux() > 0 && ComunDB.TIPODB == ComunDB.TipoDB.MYSQL) {
             sql += " LIMIT " + pEmpleado.getTop_aux() + " ";
         }
@@ -38,7 +54,7 @@ public class EmpleadoDAL {
         ArrayList<Empleado> empleados = new ArrayList();
         try (Connection conn = ComunDB.obtenerConexion();) {
             String sql = obtenerSelect(pEmpleado);
-            sql += " WHERE u.Id<>? AND u.Login=?";
+            sql += " WHERE em.Id<>? AND em.Login=?";
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                 ps.setInt(1, pEmpleado.getId());
                 ps.setString(2, pEmpleado.getUsuario());
@@ -125,7 +141,7 @@ public class EmpleadoDAL {
         int result;
         String sql;
         try (Connection conn = ComunDB.obtenerConexion();) { 
-            sql = "DELETE FROM Usuario WHERE Id=?"; 
+            sql = "DELETE FROM Empleado WHERE Id=?"; 
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                 ps.setInt(1, pEmpleado.getId());
                 result = ps.executeUpdate();
@@ -198,7 +214,7 @@ public class EmpleadoDAL {
         ArrayList<Empleado> empleados = new ArrayList();
         try (Connection conn = ComunDB.obtenerConexion();) {
             String sql = obtenerSelect(pEmpleado);
-            sql += " WHERE u.Id=?";
+            sql += " WHERE em.Id=?";
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                 ps.setInt(1, pEmpleado.getId());
                 obtenerDatos(ps, empleados);
@@ -264,15 +280,14 @@ public class EmpleadoDAL {
     public static Empleado login(Empleado pEmpleado) throws Exception {
         Empleado empleado = new Empleado();
         ArrayList<Empleado> empleados = new ArrayList();
-        String password = pEmpleado.getClave();
+        String password = encriptarMD5(pEmpleado.getClave());
         try (Connection conn = ComunDB.obtenerConexion();) {
             String sql = obtenerSelect(pEmpleado);
-            sql += " WHERE u.Login=? AND u.Password=? AND u.Estatus=?";
+            sql += " WHERE em.Usuario=? AND em.Clave=? AND em.Estatus=?";
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                 ps.setString(1, pEmpleado.getUsuario());
                 ps.setString(2, password);
                 ps.setByte(3, Empleado.EstatusEmpleado.ACTIVO);
-                ps.setByte(3, Empleado.EstatusEmpleado.INACTIVO);
 
                 obtenerDatos(ps, empleados);
                 ps.close();
@@ -300,7 +315,7 @@ public class EmpleadoDAL {
 
         if (empleadoAut.getId() > 0 && empleadoAut.getUsuario().equals(pEmpleado.getUsuario())) {
             try (Connection conn = ComunDB.obtenerConexion();) {
-                sql = "UPDATE Usuario SET Password=? WHERE Id=?";
+                sql = "UPDATE Empleado SET Password=? WHERE Id=?";
                 try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                     ps.setString(1, pEmpleado.getClave()); 
                     ps.setInt(2, pEmpleado.getId());
@@ -331,8 +346,8 @@ public class EmpleadoDAL {
             sql += obtenerCampos();
             sql += ",";
            sql += RolDAL.obtenerCampos();
-            sql += " FROM Empleado e";
-            sql += " JOIN Rol r on (e.RolId=r.Id)";
+            sql += " FROM Empleado em";
+            sql += " JOIN Rol r on (em.RolId=r.Id)";
             ComunDB comundb = new ComunDB();
             ComunDB.utilQuery utilQuery = comundb.new utilQuery(sql, null, 0);
             querySelect(pEmpleado, utilQuery);

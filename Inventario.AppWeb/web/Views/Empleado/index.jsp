@@ -1,14 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="controlempresas.entidadesdenegocio.Usuario"%>
-<%@page import="controlempresas.entidadesdenegocio.Rol"%>
+<%@page import="inventario.entidadesdelnegocio.Empleado"%>
+<%@page import="inventario.entidadesdelnegocio.Rol"%>
 <%@page import="java.util.ArrayList"%>
-<% ArrayList<Usuario> usuarios = (ArrayList<Usuario>) request.getAttribute("usuarios");
+<% ArrayList<Empleado> empleados = (ArrayList<Empleado>) request.getAttribute("empleados");
     int numPage = 1;
     int numReg = 10;
     int countReg = 0;
     if (empleados == null) {
         empleados = new ArrayList();
-    } else if (emleados.size() > numReg) {
+    } else if (empleados.size() > numReg) {
         double divNumPage = (double) empleados.size() / (double) numReg;
         numPage = (int) Math.ceil(divNumPage);
     }
@@ -30,7 +30,7 @@
         <jsp:include page="/Views/Shared/headerBody.jsp" />  
         <main class="container">   
             <h5>Buscar Empleado</h5>
-            <form action="Usuario" method="post">
+            <form action="Empleado" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>"> 
                 <div class="row">
                     <div class="input-field col l4 s12">
@@ -95,8 +95,8 @@
                                             tempNumPage = (int) Math.ceil(divTempNumPage);
                                         }
                                         String estatus = "";
-                                        switch (usuario.getEstatus()) {
-                                            case Emleado.EstatusEmpleado.ACTIVO:
+                                        switch (empleado.getEstatus()) {
+                                            case Empleado.EstatusEmpleado.ACTIVO:
                                                 estatus = "ACTIVO";
                                                 break;
                                             case Empleado.EstatusEmpleado.INACTIVO:
@@ -109,16 +109,15 @@
                                 <tr data-page="<%= tempNumPage%>">                                    
                                     <td><%=empleado.getNombre()%></td>  
                                     <td><%=empleado.getApellido()%></td>
-                                    <td><%=empeado.getLogin()%></td>  
+                                    <td><%=empleado.getUsuario()%></td>  
                                     <td><%=empleado%></td>
                                     <td><%=empleado.getRol().getNombre()%></td> 
-                                    <td><%=empleado.getFechaRegistro()%></td> 
                                     <td>
                                         <div style="display:flex">
-                                             <a href="Usuario?accion=edit&id=<%=empleado.getId()%>" title="Modificar" class="waves-effect waves-light btn green">
+                                             <a href="Empleado?accion=edit&id=<%=empleado.getId()%>" title="Modificar" class="waves-effect waves-light btn green">
                                             <i class="material-icons">edit</i>
                                         </a>
-                                        <a href="Empeado?accion=details&id=<%=empleado.getId()%>" title="Ver" class="waves-effect waves-light btn blue">
+                                        <a href="Empleado?accion=details&id=<%=empleado.getId()%>" title="Ver" class="waves-effect waves-light btn blue">
                                             <i class="material-icons">description</i>
                                         </a>
                                         <a href="Empleado?accion=delete&id=<%=empleado.getId()%>" title="Eliminar" class="waves-effect waves-light btn red">

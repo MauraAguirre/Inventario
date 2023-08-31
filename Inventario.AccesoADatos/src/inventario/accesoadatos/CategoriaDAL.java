@@ -18,7 +18,7 @@ public class CategoriaDAL {
         if (pCategoria.getTop_aux() > 0 && ComunDB.TIPODB == ComunDB.TipoDB.SQLSERVER) {            
             sql += "TOP " + pCategoria.getTop_aux() + " ";
         }
-        sql += (obtenerCampos() + " FROM Categoria c");
+        sql += (obtenerCampos() + " FROM Categoria ca");
         return sql;
     }
     

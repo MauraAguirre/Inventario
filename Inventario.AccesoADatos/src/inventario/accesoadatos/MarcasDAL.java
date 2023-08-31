@@ -19,7 +19,7 @@ public class MarcasDAL {
         if (pMarcas.getTop_aux() > 0 && ComunDB.TIPODB == ComunDB.TipoDB.SQLSERVER) {            
             sql += "TOP " + pMarcas.getTop_aux() + " ";
         }
-        sql += (obtenerCampos() + " FROM Marcas m");
+        sql += (obtenerCampos() + " FROM Marcas marc");
         return sql;
     }
     
