@@ -6,10 +6,10 @@
 <% ArrayList<Rol> roles = RolDAL.obtenerTodos();
     int id = Integer.parseInt(request.getParameter("id"));
 %>
-<select id="slRol" name="idRol">
+<select id="slRol" name="RolId">
     <option <%=(id == 0) ? "selected" : ""%>  value="0">SELECCIONAR</option>
     <% for (Rol rol : roles) {%>
     <option <%=(id == rol.getId()) ? "selected" : ""%>  value="<%=rol.getId()%>"><%= rol.getNombre()%></option>
     <%}%>
 </select>
-<label for="idRol">Rol</label>
+<label for="RolId">Rol</label>
