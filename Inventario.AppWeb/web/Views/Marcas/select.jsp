@@ -6,10 +6,10 @@
 <% ArrayList<Marcas> marcas = MarcasDAL.obtenerTodos();
     int id = Integer.parseInt(request.getParameter("id"));
 %>
-<select id="slMacas" name="MarcaId">
+<select id="slMacas" name="MarcasId">
     <option <%=(id == 0) ? "selected" : ""%>  value="0">SELECCIONAR</option>
     <% for (Marcas marca : marcas) {%>
-    <option <%=(id == marcas.getId()) ? "selected" : ""%>  value="<%=marcas.getId()%>"><%= marcas.getNombre()%></option>
+    <option <%=(id == marca.getId()) ? "selected" : ""%>  value="<%=marca.getId()%>"><%= marca.getNombre()%></option>
     <%}%>
 </select>
 <label for="MarcasId">Marcas</label>

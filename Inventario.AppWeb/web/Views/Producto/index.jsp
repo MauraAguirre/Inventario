@@ -3,6 +3,7 @@
 <%@page import="inventario.entidadesdelnegocio.Categoria"%>
 <%@page import="inventario.entidadesdelnegocio.Marcas"%>
 <%@page import="inventario.entidadesdelnegocio.Proveedores"%>
+<%@page import="inventario.entidadesdelnegocio.Producto"%>
 <%@page import="java.util.ArrayList"%>
 
 <% ArrayList<Producto> productos = (ArrayList<Producto>) request.getAttribute("producto");   

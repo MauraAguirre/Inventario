@@ -1,6 +1,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="inventario.entidadesdelnegocio..Categoria"%>
+<%@page import="inventario.entidadesdelnegocio.Categoria"%>
 <%@page import="inventario.entidadesdelnegocio.Marcas"%>
 <%@page import="inventario.entidadesdelnegocio.Proveedores"%>
 
@@ -29,19 +29,19 @@
                         <jsp:include page="/Views/Categoria/select.jsp">                           
                             <jsp:param name="id" value="0" />  
                         </jsp:include>  
-                        <span id="slRol_error" style="color:red" class="helper-text"></span>
+                        <span id="slCategoria_error" style="color:red" class="helper-text"></span>
                     </div>
                     <div class="input-field col l4 s12">   
                         <jsp:include page="/Views/Marcas/select.jsp">                           
                             <jsp:param name="id" value="0" />  
                         </jsp:include>  
-                        <span id="slRol_error" style="color:red" class="helper-text"></span>
+                        <span id="slMarcas_error" style="color:red" class="helper-text"></span>
                     </div>
                     <div class="input-field col l4 s12">   
                         <jsp:include page="/Views/Proveedores/select.jsp">                           
                             <jsp:param name="id" value="0" />  
                         </jsp:include>  
-                        <span id="slRol_error" style="color:red" class="helper-text"></span>
+                        <span id="slProveedores_error" style="color:red" class="helper-text"></span>
                     </div>
                     <div class="input-field col l4 s12">
                         <input  id="txtCantidad" type="text" name="cantidad" required class="validate" maxlength="25">

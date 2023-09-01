@@ -6,10 +6,10 @@
 <% ArrayList<Proveedores> proveedores = ProveedoresDAL.obtenerTodos();
     int id = Integer.parseInt(request.getParameter("id"));
 %>
-<select id="slProveedores" name="idProveedores">
+<select id="slProveedores" name="ProveedoresId">
     <option <%=(id == 0) ? "selected" : ""%>  value="0">SELECCIONAR</option>
-    <% for (Proveedores proveedores : proveedores) {%>
-    <option <%=(id == proveedores.getId()) ? "selected" : ""%>  value="<%=proveedores.getId()%>"><%= proveedores.getNombre()%></option>
+    <% for (Proveedores proveedor : proveedores) {%>
+    <option <%=(id == proveedor.getId()) ? "selected" : ""%>  value="<%=proveedor.getId()%>"><%= proveedor.getNombre()%></option>
     <%}%>
 </select>
-<label for="idProveedores">Proveedores</label>
+<label for="ProveedoresId">Proveedores</label>
