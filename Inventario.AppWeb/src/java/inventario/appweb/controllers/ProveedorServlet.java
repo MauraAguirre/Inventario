@@ -1,4 +1,3 @@
-
 package inventario.appweb.controllers;
 
 import java.io.IOException;
@@ -18,7 +17,7 @@ import inventario.entidadesdelnegocio.Proveedores;
 
 
 @WebServlet(name = "ProveedoresServlet", urlPatterns = {"/Proveedor"})
-public class ProveedoresServlet extends HttpServlet {
+public class ProveedorServlet extends HttpServlet {
 
     private Proveedores obtenerProveedores(HttpServletRequest request) {
         String accion = Utilidad.getParameter(request, "accion", "index");
@@ -41,7 +40,7 @@ public class ProveedoresServlet extends HttpServlet {
             Proveedores proveedor = new Proveedores();
             proveedor.setTop_aux(10);
             ArrayList<Proveedores> proveedores = ProveedoresDAL.buscar(proveedor);
-            request.setAttribute("proveedore", proveedores);
+            request.setAttribute("proveedores", proveedores);
             request.setAttribute("top_aux", proveedor.getTop_aux());             
             request.getRequestDispatcher("Views/Proveedores/index.jsp").forward(request, response);
         } catch (Exception ex) {
@@ -53,7 +52,7 @@ public class ProveedoresServlet extends HttpServlet {
         try {
             Proveedores proveedor = obtenerProveedores(request);
             ArrayList<Proveedores> proveedores = ProveedoresDAL.buscar(proveedor);
-            request.setAttribute("proveedore", proveedores);
+            request.setAttribute("proveedores", proveedores);
             request.setAttribute("top_aux", proveedor.getTop_aux());
             request.getRequestDispatcher("Views/Proveedores/index.jsp").forward(request, response);
         } catch (Exception ex) { 
@@ -140,7 +139,6 @@ public class ProveedoresServlet extends HttpServlet {
         }
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -203,5 +201,5 @@ public class ProveedoresServlet extends HttpServlet {
             }
         });
     }
-// </editor-fold>
+
 }

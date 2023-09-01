@@ -4,13 +4,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:include page="/Views/Shared/title.jsp" />
-        <title>Crear Proveedor</title>
+        <title>Crear Proveedores</title>
     </head>
     <body>
         <jsp:include page="/Views/Shared/headerBody.jsp" />  
         <main class="container">   
-            <h5>Crear Proveedor</h5>
-            <form action="Proveedores" method="post">
+            <h5>Crear proveedores</h5>
+            <form action="proveedor" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>">                
                 <div class="row">
                     <div class="input-field col l4 s12">
@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="col l12 s12">
                         <button type="sutmit" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Guardar</button>
-                        <a href="Proveedores" class="waves-effect waves-light btn blue"><i class="material-icons right">cancel</i>Cancelar</a>                          
+                        <a href="Rol" class="waves-effect waves-light btn blue"><i class="material-icons right">cancel</i>Cancelar</a>                          
                     </div>
                 </div>
             </form>          

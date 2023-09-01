@@ -17,15 +17,14 @@ import inventario.appweb.utils.*;
 @WebServlet(name = "RolServlet", urlPatterns = {"/Rol"})
 public class RolServlet extends HttpServlet {
 
-     private Rol obtenerRol(HttpServletRequest request) {
+    private Rol obtenerRol(HttpServletRequest request) {
         String accion = Utilidad.getParameter(request, "accion", "index");
         Rol rol = new Rol();
         if (accion.equals("create") == false) {
             rol.setId(Integer.parseInt(Utilidad.getParameter(request, "id", "0")));
         }
-        
-         rol.setNombre(Utilidad.getParameter(request, "nombre", ""));
-         
+
+        rol.setNombre(Utilidad.getParameter(request, "nombre", ""));
         if (accion.equals("index")) {
             rol.setTop_aux(Integer.parseInt(Utilidad.getParameter(request, "top_aux", "10")));
             rol.setTop_aux(rol.getTop_aux() == 0 ? Integer.MAX_VALUE : rol.getTop_aux());
@@ -33,6 +32,7 @@ public class RolServlet extends HttpServlet {
         
         return rol;
     }
+    
     private void doGetRequestIndex(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             Rol rol = new Rol();
@@ -43,9 +43,10 @@ public class RolServlet extends HttpServlet {
             request.getRequestDispatcher("Views/Rol/index.jsp").forward(request, response);
         } catch (Exception ex) {
             Utilidad.enviarError(ex.getMessage(), request, response);
-              }
+        }
     }
-     private void doPostRequestIndex(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    
+    private void doPostRequestIndex(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             Rol rol = obtenerRol(request);
             ArrayList<Rol> roles = RolDAL.buscar(rol);
@@ -56,7 +57,8 @@ public class RolServlet extends HttpServlet {
             Utilidad.enviarError(ex.getMessage(), request, response);
         }
     }
-      private void doGetRequestCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    
+    private void doGetRequestCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("Views/Rol/create.jsp").forward(request, response);
     }
     
@@ -74,7 +76,8 @@ public class RolServlet extends HttpServlet {
             Utilidad.enviarError(ex.getMessage(), request, response);
         }
     }
-      private void requestObtenerPorId(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    
+    private void requestObtenerPorId(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             Rol rol = obtenerRol(request);
             Rol rol_result = RolDAL.obtenerPorId(rol);
@@ -87,7 +90,8 @@ public class RolServlet extends HttpServlet {
             Utilidad.enviarError(ex.getMessage(), request, response);
         }
     }
-       private void doGetRequestEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    
+    private void doGetRequestEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         requestObtenerPorId(request, response);
         request.getRequestDispatcher("Views/Rol/edit.jsp").forward(request, response);
     }
@@ -107,4 +111,93 @@ public class RolServlet extends HttpServlet {
             Utilidad.enviarError(ex.getMessage(), request, response);
         }
     }
+    
+    private void doGetRequestDetails(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        requestObtenerPorId(request, response);
+        request.getRequestDispatcher("Views/Rol/details.jsp").forward(request, response);
+    }
+    
+    private void doGetRequestDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        requestObtenerPorId(request, response);
+        request.getRequestDispatcher("Views/Rol/delete.jsp").forward(request, response);
+    }
+    
+    private void doPostRequestDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            Rol rol = obtenerRol(request);
+            int result = RolDAL.eliminar(rol);
+            if (result != 0) {
+                request.setAttribute("accion", "index");
+                doGetRequestIndex(request, response);
+            } else {
+                Utilidad.enviarError("No se logro eliminar el registro", request, response);
+            }
+        } catch (Exception ex) {
+            Utilidad.enviarError(ex.getMessage(), request, response);
+        }
+    }
+
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        SessionUser.authorize(request, response, () -> {
+            String accion = Utilidad.getParameter(request, "accion", "index");
+            switch (accion) {
+                case "index":
+                    request.setAttribute("accion", accion);
+                    doGetRequestIndex(request, response);
+                    break;
+                case "create":
+                    request.setAttribute("accion", accion);
+                    doGetRequestCreate(request, response);
+                    break;
+                case "edit":
+                    request.setAttribute("accion", accion);
+                    doGetRequestEdit(request, response);
+                    break;
+                case "delete":
+                    request.setAttribute("accion", accion);
+                    doGetRequestDelete(request, response);
+                    break;
+                case "details":
+                    request.setAttribute("accion", accion);
+                    doGetRequestDetails(request, response);
+                    break;
+                default:
+                    request.setAttribute("accion", accion);
+                    doGetRequestIndex(request, response);
+            }
+        });
+    }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        SessionUser.authorize(request, response, () -> {
+            String accion = Utilidad.getParameter(request, "accion", "index");
+            switch (accion) {
+                case "index":
+                    request.setAttribute("accion", accion);
+                    doPostRequestIndex(request, response);
+                    break;
+                case "create":
+                    request.setAttribute("accion", accion);
+                    doPostRequestCreate(request, response);
+                    break;
+                case "edit":
+                    request.setAttribute("accion", accion);
+                    doPostRequestEdit(request, response);
+                    break;
+                case "delete":
+                    request.setAttribute("accion", accion);
+                    doPostRequestDelete(request, response);
+                    break;
+                default:
+                    request.setAttribute("accion", accion);
+                    doGetRequestIndex(request, response);
+            }
+        });
+    }
+
 }

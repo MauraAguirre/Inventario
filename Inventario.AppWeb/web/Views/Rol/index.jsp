@@ -1,5 +1,5 @@
-%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Inventario.entidadesdelnegocio.Rol"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="inventario.entidadesdelnegocio.Rol"%>
 <%@page import="java.util.ArrayList"%>
 
 <% ArrayList<Rol> roles = (ArrayList<Rol>) request.getAttribute("roles");
