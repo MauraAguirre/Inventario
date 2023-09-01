@@ -1,4 +1,4 @@
-%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="inventario.entidadesdelnegocio.Marcas"%>
 <%@page import="java.util.ArrayList"%>
 
@@ -8,8 +8,8 @@
     int countReg = 0;
     if (marcas == null) {
         marcas = new ArrayList();
-    } else if (roles.size() > numReg) {
-        double divNumPage = (double) roles.size() / (double) numReg;
+    } else if (marcas.size() > numReg) {
+        double divNumPage = (double) marcas.size() / (double) numReg;
         numPage = (int) Math.ceil(divNumPage);
     }
     String strTop_aux = request.getParameter("top_aux");

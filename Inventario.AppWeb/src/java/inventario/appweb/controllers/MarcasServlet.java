@@ -115,12 +115,12 @@ public class MarcasServlet extends HttpServlet {
     
     private void doGetRequestDetails(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         requestObtenerPorId(request, response);
-        request.getRequestDispatcher("Views/Marca/details.jsp").forward(request, response);
+        request.getRequestDispatcher("Views/Marcas/details.jsp").forward(request, response);
     }
     
     private void doGetRequestDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         requestObtenerPorId(request, response);
-        request.getRequestDispatcher("Views/Marca/delete.jsp").forward(request, response);
+        request.getRequestDispatcher("Views/Marcas/delete.jsp").forward(request, response);
     }
     
     private void doPostRequestDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

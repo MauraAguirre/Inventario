@@ -41,10 +41,7 @@
                         <input  id="txtApellido" type="text" name="apellido">
                         <label for="txtApellido">Apellido</label>
                     </div> 
-                    <div class="input-field col l4 s12">
-                        <input  id="txtLogin" type="text" name="login">
-                        <label for="txtLogin">Login</label>
-                    </div>                    
+                                        
                     <div class="input-field col l4 s12">   
                         <select id="slEstatus" name="estatus">
                             <option value="0">SELECCIONAR</option>
@@ -79,8 +76,7 @@
                             <thead>
                                 <tr>                                     
                                     <th>Nombre</th>  
-                                    <th>Apellido</th> 
-                                    <th>Login</th>  
+                                    <th>Apellido</th>  
                                     <th>Usuario</th>  
                                     <th>Clave</th>   
                                     <th>RolId</th>   

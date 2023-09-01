@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Inventario.entidadesdelnegocio.Empleado"%>
+<%@page import="inventario.entidadesdelnegocio.Empleado"%>
 <% Empleado empleado = (Empleado) request.getAttribute("empleado");%>
 
 <!DOCTYPE html>
@@ -29,21 +29,13 @@
                         <label for="txtUsuario">Usuario</label>
                     </div>
                     
-                    <div class="input-field col l4 s12">
-                        <input  id="txtClave" type="text" name="clave" value="<%=empleado.getClave()%>" required  class="validate" maxlength="25">
-                        <label for="txtClave">Clave</label>
-                    </div>
+                   
                     <div class="input-field col l4 s12">
                         <input  id="txtRolId" type="text" name="RolId" value="<%=empleado.getRolId()%>" required  class="validate" maxlength="25">
                         <label for="txtRolId">RolId</label>
                     </div>
                     
-                    <div class="input-field col l4 s12">   
-                        <jsp:include page="/Views/Contacto/select.jsp">                           
-                            <jsp:param name="id" value="<%=Empleado.getIdEmpleado() %>" />  
-                        </jsp:include>  
-                        <span id="slContacto_error" style="color:red" class="helper-text"></span>
-                    </div>
+                    
                 </div>
 
                 <div class="row">

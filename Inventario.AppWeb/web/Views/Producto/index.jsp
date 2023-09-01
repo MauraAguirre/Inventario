@@ -36,7 +36,7 @@
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>"> 
                 <div class="row">
                     <div class="input-field col l4 s12">
-                        <input  id="txtNombre" type="text" name="codigo">
+                        <input  id="txtNombre" type="text" name="Nombre">
                         <label for="txtNombre">Nombre</label>
                     </div>  
                     
@@ -116,7 +116,7 @@
                                 </tr>
                             </thead>                       
                             <tbody>                           
-                                <% for (Producto producto : productos) {
+                                <% for (Producto producto : producto) {
                                         int tempNumPage = numPage;
                                         if (numPage > 1) {
                                             countReg++;

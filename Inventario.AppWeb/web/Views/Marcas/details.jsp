@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="inventario.entidadesdelnegocio.Marcas"%>
-<% Marcas marca = (Marcas) request.getAttribute("marca");%>
+<% Marcas marcas = (Marcas) request.getAttribute("marcas");%>
 
 <!DOCTYPE html>
 <html>
@@ -15,13 +15,13 @@
             <h5>Detalle de la Marca</h5>
             <div class="row">
                 <div class="input-field col l4 s12">
-                    <input disabled  id="txtNombre" type="text" value="<%=marca.getNombre()%>">
+                    <input disabled  id="txtNombre" type="text" value="<%=marcas.getNombre()%>">
                     <label for="txtNombre">Nombre</label>
                 </div>                                         
             </div>
             <div class="row">
                 <div class="col l12 s12">
-                    <a href="Marcas?accion=edit&id=<%=marca.getId()%>" class="waves-effect waves-light btn blue"><i class="material-icons right">edit</i>Ir modificar</a>                        
+                    <a href="Marcas?accion=edit&id=<%=marcas.getId()%>" class="waves-effect waves-light btn blue"><i class="material-icons right">edit</i>Ir modificar</a>                        
                     <a href="Marcas" class="waves-effect waves-light btn blue"><i class="material-icons right">list</i>Cancelar</a>                          
                 </div>
             </div>         
