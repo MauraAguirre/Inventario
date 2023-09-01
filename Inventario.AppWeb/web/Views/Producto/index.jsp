@@ -4,7 +4,8 @@
 <%@page import="inventario.entidadesdelnegocio.Marcas"%>
 <%@page import="inventario.entidadesdelnegocio.Proveedores"%>
 <%@page import="java.util.ArrayList"%>
-<% ArrayList<Producto> productos = (ArrayList<Producto>) request.getAttribute("productos");
+
+<% ArrayList<Producto> productos = (ArrayList<Producto>) request.getAttribute("producto");   
     int numPage = 1;
     int numReg = 10;
     int countReg = 0;
@@ -112,11 +113,10 @@
                                     <th>Ingreso</th> 
                                     <th>Salida</th> 
                                     <th>Total</th> 
-                                    <th>Acciones</th>
                                 </tr>
                             </thead>                       
                             <tbody>                           
-                                <% for (Producto producto : producto) {
+                                <% for (Producto producto : productos) {
                                         int tempNumPage = numPage;
                                         if (numPage > 1) {
                                             countReg++;

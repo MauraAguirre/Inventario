@@ -41,9 +41,9 @@ public class ProveedoresServlet extends HttpServlet {
             Proveedores proveedor = new Proveedores();
             proveedor.setTop_aux(10);
             ArrayList<Proveedores> proveedores = ProveedoresDAL.buscar(proveedor);
-            request.setAttribute("proveedores", proveedores);
+            request.setAttribute("proveedore", proveedores);
             request.setAttribute("top_aux", proveedor.getTop_aux());             
-            request.getRequestDispatcher("Views/Rol/index.jsp").forward(request, response);
+            request.getRequestDispatcher("Views/Proveedores/index.jsp").forward(request, response);
         } catch (Exception ex) {
             Utilidad.enviarError(ex.getMessage(), request, response);
         }
@@ -53,7 +53,7 @@ public class ProveedoresServlet extends HttpServlet {
         try {
             Proveedores proveedor = obtenerProveedores(request);
             ArrayList<Proveedores> proveedores = ProveedoresDAL.buscar(proveedor);
-            request.setAttribute("proveedores", proveedores);
+            request.setAttribute("proveedore", proveedores);
             request.setAttribute("top_aux", proveedor.getTop_aux());
             request.getRequestDispatcher("Views/Proveedores/index.jsp").forward(request, response);
         } catch (Exception ex) { 

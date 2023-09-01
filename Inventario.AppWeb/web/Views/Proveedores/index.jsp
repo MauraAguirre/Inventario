@@ -1,4 +1,4 @@
-%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="inventario.entidadesdelnegocio.Proveedores"%>
 <%@page import="java.util.ArrayList"%>
 
@@ -56,12 +56,12 @@
                         <table class="paginationjs">
                             <thead>
                                 <tr>
-                                    <th>Nombre</th>                                          
-                                    <th>Acciones</th>
+                                    <th>Nombre</th>
+                                 
                                 </tr>
                             </thead>                       
                             <tbody>                           
-                                <% for (Proveedores proveedores : proveedores) {
+                                <% for (Proveedores proveedor : proveedores) {
                                         int tempNumPage = numPage;
                                         if (numPage > 1) {
                                             countReg++;
@@ -70,22 +70,22 @@
                                         }
                                 %>
                                 <tr data-page="<%= tempNumPage%>">
-                                    <td><%=proveedores.getNombre()%></td>                                       
+                                    <td><%=proveedor.getNombre()%></td>
                                     <td>
                                         <div style="display:flex">
-                                            <a href="Rol?accion=edit&id=<%=proveedores.getId()%>" title="Modificar" class="waves-effect waves-light btn green">
+                                            <a href="Proveedores?accion=edit&id=<%=proveedor.getId()%>" title="Modificar" class="waves-effect waves-light btn green">
                                                 <i class="material-icons">edit</i>
                                             </a>
-                                            <a href="Rol?accion=details&id=<%=proveedores.getId()%>" title="Ver" class="waves-effect waves-light btn blue">
+                                            <a href="Proveedores?accion=details&id=<%=proveedor.getId()%>" title="Ver" class="waves-effect waves-light btn blue">
                                                 <i class="material-icons">description</i>
                                             </a>
-                                            <a href="Rol?accion=delete&id=<%=proveedores.getId()%>" title="Eliminar" class="waves-effect waves-light btn red">
+                                            <a href="Proveedores?accion=delete&id=<%=proveedor.getId()%>" title="Eliminar" class="waves-effect waves-light btn red">
                                                 <i class="material-icons">delete</i>
                                             </a>     
                                         </div>
                                     </td>                                   
                                 </tr>
-                                <%}%>                                                       
+                                <% } %>                                                       
                             </tbody>
                         </table>
                     </div>                  

@@ -13,6 +13,8 @@
             <li><a href="Empleado">Empleado</a></li>
             <li><a href="Marcas">Marcas</a></li>
             <li><a href="Producto">Producto</a></li>
+            <li><a href="Rol">Rol</a></li>
+            <li><a href="Proveedor">Proveedores</a></li>
             <li><a href="Empleado?accion=cambiarpass">Cambiar password</a></li>
             <li><a href="Empleado?accion=login">Cerrar sesión</a></li>
             <%}%>
@@ -27,6 +29,8 @@
             <li><a href="Empleado">Empleado</a></li>
             <li><a href="Marcas">Marcas</a></li>
             <li><a href="Producto">Producto</a></li>
+            <li><a href="Rol">Rol</a></li>
+            <li><a href="Proveedor">Proveedores</a></li>
             <li><a href="Empleado?accion=cambiarpass">Cambiar password</a></li>
             <li><a href="Empleado?accion=login">Cerrar sesión</a></li>
      <%}%>
