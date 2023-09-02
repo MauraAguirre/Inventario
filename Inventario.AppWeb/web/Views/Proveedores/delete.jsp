@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="inventario.entidadesdelnegocio.Proveedores"%>
-<%Provedores proveedores = (Proveedores) request.getAttribute("proveedores");%>
+<%Proveedores proveedores = (Proveedores) request.getAttribute("proveedor");%>
 
 <!DOCTYPE html>
 <html>
@@ -13,7 +13,7 @@
         <jsp:include page="/Views/Shared/headerBody.jsp" />  
         <main class="container">   
             <h5>Eliminar Proveedores</h5>          
-            <form action="Proveedores" method="post">
+            <form action="Proveedor" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>">   
                 <input type="hidden" name="id" value="<%=proveedores.getId()%>">   
                 <div class="row">
@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col l12 s12">
                         <button type="sutmit" class="waves-effect waves-light btn blue"><i class="material-icons right">delete</i>Eliminar</button>
-                        <a href="Proveedores" class="waves-effect waves-light btn blue"><i class="material-icons right">list</i>Cancelar</a>                          
+                        <a href="Proveedor" class="waves-effect waves-light btn blue"><i class="material-icons right">list</i>Cancelar</a>                          
                     </div>
                 </div>
             </form>          

@@ -29,7 +29,7 @@
         <jsp:include page="/Views/Shared/headerBody.jsp" />  
         <main class="container">   
             <h5>Buscar Proveedores</h5>
-            <form action="Proveedores" method="post">
+            <form action="Proveedor" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>"> 
                 <div class="row">
                     <div class="input-field col l6 s12">
@@ -45,8 +45,9 @@
                 <div class="row">
                     <div class="col l12 s12">
                         <button type="sutmit" class="waves-effect waves-light btn blue"><i class="material-icons right">search</i>Buscar</button>
-                        <a href="Proveedores?accion=create" class="waves-effect waves-light btn blue"><i class="material-icons right">add</i>Crear</a>                          
+                        <a href="Proveedor?accion=create" class="waves-effect waves-light btn blue"><i class="material-icons right">add</i>Crear</a>                          
                     </div>
+                </div>
                 </div>
             </form>
 
@@ -73,13 +74,13 @@
                                     <td><%=proveedor.getNombre()%></td>
                                     <td>
                                         <div style="display:flex">
-                                            <a href="Proveedores?accion=edit&id=<%=proveedor.getId()%>" title="Modificar" class="waves-effect waves-light btn green">
+                                            <a href="Proveedor?accion=edit&id=<%=proveedor.getId()%>" title="Modificar" class="waves-effect waves-light btn green">
                                                 <i class="material-icons">edit</i>
                                             </a>
-                                            <a href="Proveedores?accion=details&id=<%=proveedor.getId()%>" title="Ver" class="waves-effect waves-light btn blue">
+                                            <a href="Proveedor?accion=details&id=<%=proveedor.getId()%>" title="Ver" class="waves-effect waves-light btn blue">
                                                 <i class="material-icons">description</i>
                                             </a>
-                                            <a href="Proveedores?accion=delete&id=<%=proveedor.getId()%>" title="Eliminar" class="waves-effect waves-light btn red">
+                                            <a href="Proveedor?accion=delete&id=<%=proveedor.getId()%>" title="Eliminar" class="waves-effect waves-light btn red">
                                                 <i class="material-icons">delete</i>
                                             </a>     
                                         </div>
