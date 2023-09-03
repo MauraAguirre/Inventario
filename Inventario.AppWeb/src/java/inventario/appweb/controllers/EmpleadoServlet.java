@@ -25,7 +25,7 @@ public class EmpleadoServlet extends HttpServlet {
         emple.setNombre(Utilidad.getParameter(request, "nombre", ""));
         emple.setApellido(Utilidad.getParameter(request, "apellido", ""));
         emple.setUsuario(Utilidad.getParameter(request, "usuario", ""));
-        emple.setRolId(Integer.parseInt(Utilidad.getParameter(request, "idRol", "0")));
+        emple.setRolId(Integer.parseInt(Utilidad.getParameter(request, "RolId", "0")));
         emple.setEstatus(Byte.parseByte(Utilidad.getParameter(request, "estatus", "0")));
       
          if (accion.equals("index")) {

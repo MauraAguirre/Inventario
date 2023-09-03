@@ -41,7 +41,16 @@
                         <input  id="txtApellido" type="text" name="apellido">
                         <label for="txtApellido">Apellido</label>
                     </div> 
-                                        
+                    <div class="input-field col l4 s12">
+                        <input  id="txtUsuario" type="text" name="usuario">
+                        <label for="txtUsuario">Usuario</label>
+                    </div>                    
+                    
+                    <div class="input-field col l4 s12">   
+                        <jsp:include page="/Views/Rol/select.jsp">                           
+                            <jsp:param name="id" value="0" />  
+                        </jsp:include>                        
+                    </div>
                     <div class="input-field col l4 s12">   
                         <select id="slEstatus" name="estatus">
                             <option value="0">SELECCIONAR</option>
@@ -49,11 +58,6 @@
                             <option value="<%=Empleado.EstatusEmpleado.INACTIVO%>">INACTIVO</option>
                         </select>       
                         <label for="slEstatus">Estatus</label>
-                    </div>
-                    <div class="input-field col l4 s12">   
-                        <jsp:include page="/Views/Rol/select.jsp">                           
-                            <jsp:param name="id" value="0" />  
-                        </jsp:include>                        
                     </div>
                     <div class="input-field col l4 s12">   
                         <jsp:include page="/Views/Shared/selectTop.jsp">
@@ -76,10 +80,11 @@
                             <thead>
                                 <tr>                                     
                                     <th>Nombre</th>  
-                                    <th>Apellido</th>  
+                                    <th>Apellido</th> 
                                     <th>Usuario</th>  
-                                    <th>Clave</th>   
-                                    <th>RolId</th>   
+                                     
+                                    <th>Rol</th> 
+                                    <th>Estatus</th> 
                                 </tr>
                             </thead>                       
                             <tbody>                           
@@ -106,8 +111,9 @@
                                     <td><%=empleado.getNombre()%></td>  
                                     <td><%=empleado.getApellido()%></td>
                                     <td><%=empleado.getUsuario()%></td>  
-                                    <td><%=empleado%></td>
-                                    <td><%=empleado.getRol().getNombre()%></td> 
+                                    <td><%=empleado.getRol().getNombre()%></td>
+                                    <td><%=estatus%></td>
+                                     
                                     <td>
                                         <div style="display:flex">
                                              <a href="Empleado?accion=edit&id=<%=empleado.getId()%>" title="Modificar" class="waves-effect waves-light btn green">

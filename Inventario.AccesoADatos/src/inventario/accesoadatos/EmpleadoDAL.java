@@ -83,13 +83,14 @@ public class EmpleadoDAL {
         boolean existe = existeLogin(pEmpleado);
         if (existe == false) {
             try (Connection conn = ComunDB.obtenerConexion();) {
-                sql = "INSERT INTO Empleado(Nombre, Apellido, Usuario, Clave, RolId) VALUES(?,?,?,?,?,?,?)";
+                sql = "INSERT INTO Empleado(Nombre, Apellido, Usuario, Clave, RolId, Estatus) VALUES(?,?,?,?,?,?)";
                 try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                     ps.setString(1, pEmpleado.getNombre());
                     ps.setString(2, pEmpleado.getApellido()); 
                     ps.setString(3, pEmpleado.getUsuario());
                     ps.setString(4, pEmpleado.getClave());
                     ps.setInt(5, pEmpleado.getRolId());
+                    ps.setByte(9, pEmpleado.getEstatus());
                    result = ps.executeUpdate();
                     ps.close();
                 } catch (SQLException ex) {
