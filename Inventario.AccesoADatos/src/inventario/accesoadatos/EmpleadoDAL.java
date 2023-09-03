@@ -236,14 +236,14 @@ public class EmpleadoDAL {
         static void querySelect(Empleado pEmpleado, ComunDB.utilQuery pUtilQuery) throws SQLException {
         PreparedStatement statement = pUtilQuery.getStatement();
         if (pEmpleado.getId() > 0) {
-            pUtilQuery.AgregarNumWhere(" marc.Id=? ");
+            pUtilQuery.AgregarNumWhere(" em.Id=? ");
             if (statement != null) { 
                 statement.setInt(pUtilQuery.getNumWhere(), pEmpleado.getId()); 
             }
         }
 
         if (pEmpleado.getNombre() != null && pEmpleado.getNombre().trim().isEmpty() == false) {
-            pUtilQuery.AgregarNumWhere(" marc.Nombre LIKE ? "); 
+            pUtilQuery.AgregarNumWhere(" em.Nombre LIKE ? "); 
             if (statement != null) {
                 statement.setString(pUtilQuery.getNumWhere(), "%" + pEmpleado.getNombre() + "%"); 
             }

@@ -17,7 +17,7 @@ import inventario.appweb.utils.*;
 @WebServlet(name = "MarcasServlet", urlPatterns = {"/Marcas"})
 public class MarcasServlet extends HttpServlet {
 
-     private Marcas obtenerMarcas(HttpServletRequest request) {
+      private Marcas obtenerMarcas (HttpServletRequest request) {
         String accion = Utilidad.getParameter(request, "accion", "index");
         Marcas marca = new Marcas();
         if (accion.equals("create") == false) {
@@ -25,7 +25,6 @@ public class MarcasServlet extends HttpServlet {
         }
 
         marca.setNombre(Utilidad.getParameter(request, "nombre", ""));
-        
         if (accion.equals("index")) {
             marca.setTop_aux(Integer.parseInt(Utilidad.getParameter(request, "top_aux", "10")));
             marca.setTop_aux(marca.getTop_aux() == 0 ? Integer.MAX_VALUE : marca.getTop_aux());

@@ -17,8 +17,8 @@
                 <input type="hidden" name="id" value="<%=empleado.getId()%>">  
                 <div class="row">                   
                     <div class="input-field col l4 s12">
-                        <input  id="txtLogin" type="text" name="login" value="<%=usuario.getLogin()%>" readonly>
-                        <label for="txtLogin">Login</label>
+                        <input  id="txtUsuario" type="text" name="login" value="<%=usuario.getUsuario()%>" readonly>
+                        <label for="txtUsuario">Uusario</label>
                     </div>  
                     <div class="input-field col l4 s12">
                         <input  id="txtPasswordActual" type="password" name="passwordActual" required class="validate" minlength="5" maxlength="32">

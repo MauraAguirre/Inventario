@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="inventario.entidadesdelnegocio.Empleado"%>
-<% Empleado empleado = (Empleado) request.getAttribute("empleado");%>
+<% Empleado empleadosp = (Empleado) request.getAttribute("empleadosp");%>
 
 <!DOCTYPE html>
 <html>
@@ -14,28 +14,27 @@
             <h5>Editar Empleado</h5>
             <form action="Empleado" method="post" onsubmit="return  validarFormulario()">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>"> 
-                <input type="hidden" name="id" value="<%=empleado.getId()%>">  
+                <input type="hidden" name="id" value="<%=empleadosp.getId()%>">  
                 <div class="row">
                     <div class="input-field col l4 s12">
-                        <input  id="txtNombre" type="text" name="nombre" value="<%=empleado.getNombre()%>" required class="validate" maxlength="50">
+                        <input  id="txtNombre" type="text" name="nombre" value="<%=empleadosp.getNombre()%>" required class="validate" maxlength="50">
                         <label for="txtNombre">Nombre</label>
                     </div>                       
                     <div class="input-field col l4 s12">
-                        <input  id="txtApellido" type="text" name="apellido" value="<%=empleado.getApellido()%>" required class="validate" maxlength="30">
+                        <input  id="txtApellido" type="text" name="apellido" value="<%=empleadosp.getApellido()%>" required class="validate" maxlength="30">
                         <label for="txtApellido">Apellido</label>
                     </div> 
                     <div class="input-field col l4 s12">
-                        <input  id="txtUsuario" type="text" name="usuario" value="<%=empleado.getUsuario()%>" required  class="validate" maxlength="25">
+                        <input  id="txtUsuario" type="text" name="usuario" value="<%=empleadosp.getUsuario()%>" required  class="validate" maxlength="25">
                         <label for="txtUsuario">Usuario</label>
                     </div>
                     
                    
                     <div class="input-field col l4 s12">
-                        <input  id="txtRolId" type="text" name="RolId" value="<%=empleado.getRolId()%>" required  class="validate" maxlength="25">
+                        <input  id="txtRolId" type="text" name="RolId" value="<%=empleadosp.getRolId()%>" required  class="validate" maxlength="25">
                         <label for="txtRolId">RolId</label>
                     </div>
-                    
-                    
+                   
                 </div>
 
                 <div class="row">
@@ -51,13 +50,13 @@
         <script>
             function validarFormulario() {
                 var result = true;                
-                var slContacto = document.getElementById("slContacto");
-                var slContacto_error = document.getElementById("slContacto_error");
-                if (slContacto.value == 0) {
-                    slContacto_error.innerHTML = "El Contacto es obligatorio";
+                var slEmpleado = document.getElementById("slEmpleado");
+                var slEmpleado_error = document.getElementById("slEmpleado_error");
+                if (slEmpleado.value == 0) {
+                    slEmpleado_error.innerHTML = "El empleado es obligatorio";
                     result = false;
                 } else {
-                    slContacto_error.innerHTML = "";
+                    slEmpleado_error.innerHTML = "";
                 }
 
                 return result;

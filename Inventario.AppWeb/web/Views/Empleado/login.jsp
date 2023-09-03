@@ -16,8 +16,8 @@
                 <div class="row">
                     <div class="input-field col l5 s12">                                             
                         <i class="material-icons prefix">account_circle</i>
-                        <input  id="txtLogin" type="text" name="usuario" required class="validate" maxlength="25">  
-                        <label for="txtLogin">Login</label>
+                        <input  id="txtUsuario" type="text" name="usuario" required class="validate" maxlength="25">  
+                        <label for="txtUsuario">Usuario</label>
                     </div>                                       
                 </div>
                 <div class="row">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="row">
                     <div class="col l12 s12">
-                        <button type="sutmit" class="waves-effect waves-light btn blue"><i class="material-icons right">send</i>Login</button>                                               
+                        <button type="sutmit" class="waves-effect waves-light btn blue"><i class="material-icons right">send</i>Usuario</button>                                               
                     </div>
                 </div>
                 <% if (request.getAttribute("error") != null) { %>

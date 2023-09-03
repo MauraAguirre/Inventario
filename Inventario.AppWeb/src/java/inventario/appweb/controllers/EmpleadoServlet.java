@@ -127,7 +127,7 @@ public class EmpleadoServlet extends HttpServlet {
     }
  private void doGetRequestDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         requestObtenerPorId(request, response);
-        request.getRequestDispatcher("Views/Usuario/delete.jsp").forward(request, response);
+        request.getRequestDispatcher("Views/Empleado/delete.jsp").forward(request, response);
     }
 
     private void doPostRequestDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

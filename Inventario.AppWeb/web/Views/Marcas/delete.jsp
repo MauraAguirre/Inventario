@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="inventario.entidadesdelnegocio.Marcas"%>
-<% Marcas marcas = (Marcas) request.getAttribute("marcas");%>
+<% Marcas marca = (Marcas) request.getAttribute("marca");%>
 
 <!DOCTYPE html>
 <html>
@@ -15,10 +15,10 @@
             <h5>Eliminar Marca</h5>          
             <form action="Marcas" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>">   
-                <input type="hidden" name="id" value="<%=marcas.getId()%>">   
+                <input type="hidden" name="id" value="<%=marca.getId()%>">   
                 <div class="row">
                     <div class="input-field col l4 s12">
-                    <input disabled  id="txtNombre" type="text" value="<%=marcas.getNombre()%>">
+                    <input disabled  id="txtNombre" type="text" value="<%=marca.getNombre()%>">
                     <label for="txtNombre">Nombre</label>
                 </div>                                        
                 </div>

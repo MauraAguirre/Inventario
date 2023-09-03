@@ -35,16 +35,16 @@
                         <label for="txtRolId">RolId</label>
                     </div>  
                     <div class="input-field col l4 s12">   
-                        <jsp:include page="/Views/Contacto/select.jsp">                           
+                        <jsp:include page="/Views/Empleado/select.jsp">                           
                             <jsp:param name="id" value="0" />  
                         </jsp:include>  
-                        <span id="slContacto_error" style="color:red" class="helper-text"></span>
+                        <span id="slEmpleado_error" style="color:red" class="helper-text"></span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col l12 s12">
                         <button type="sutmit" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Guardar</button>
-                        <a href="Empresa" class="waves-effect waves-light btn blue"><i class="material-icons right">cancel</i>Cancelar</a>                          
+                        <a href="Empleado" class="waves-effect waves-light btn blue"><i class="material-icons right">cancel</i>Cancelar</a>                          
                     </div>
                 </div>
             </form>          
@@ -54,13 +54,13 @@
         <script>
             function validarFormulario() {
                 var result = true;
-                var slContacto = document.getElementById("slContacto");
-                var slContacto_error = document.getElementById("slContacto_error");
-                if (slContacto.value == 0) {
-                    slContacto_error.innerHTML = "El Contacto es obligatorio";
+                var slEmpleado = document.getElementById("slEmpleado");
+                var slEmpleado_error = document.getElementById("slEmpleado_error");
+                if (slEmpleado.value == 0) {
+                    slEmpleado_error.innerHTML = "El empleado es obligatorio";
                     result = false;
                 } else {
-                    slContacto_error.innerHTML = "";
+                    slEmpleado_error.innerHTML = "";
                 }
 
                 return result;
