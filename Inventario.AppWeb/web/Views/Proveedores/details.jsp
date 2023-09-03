@@ -24,7 +24,7 @@
                     <a href="Proveedor?accion=edit&id=<%=proveedores.getId()%>" class="waves-effect waves-light btn blue"><i class="material-icons right">edit</i>Ir modificar</a>                        
                     <a href="Proveedor" class="waves-effect waves-light btn blue"><i class="material-icons right">list</i>Cancelar</a>                          
                 </div>
-            </div>         
+            </div>        
         </main>
         <jsp:include page="/Views/Shared/footerBody.jsp" />
     </body>
