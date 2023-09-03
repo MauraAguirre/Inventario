@@ -29,7 +29,7 @@
         <jsp:include page="/Views/Shared/headerBody.jsp" />  
         <main class="container">   
             <h5>Buscar Proveedores</h5>
-            <form action="Proveedor" method="post">
+            <form action="Proveedores" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>"> 
                 <div class="row">
                     <div class="input-field col l6 s12">
