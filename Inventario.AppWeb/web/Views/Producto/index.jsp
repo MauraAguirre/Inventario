@@ -107,7 +107,7 @@
                                 <tr>                                     
                                     <th>Nombre</th>  
                                     <th>Codigo</th> 
-                                    <th>Categoria/th>  
+                                    <th>Categoria</th>  
                                     <th>Marcas</th>  
                                     <th>Proveedores</th>   
                                     <th>Cantidad</th>  

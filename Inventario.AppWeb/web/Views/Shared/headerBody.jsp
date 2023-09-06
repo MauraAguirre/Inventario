@@ -4,7 +4,7 @@
 
 <nav>
     <div class="nav-wrapper blue">
-        <a href="Home" class="brand-logo">App Empresas</a>
+        <a href="Home" class="brand-logo">Sistema de Inventario Web</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>       
         <ul class="right hide-on-med-and-down">  
             <% if (SessionUser.isAuth(request)) {  %>
